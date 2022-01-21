@@ -11,3 +11,16 @@ In order for our API to return data we need to implement resolver for our query.
 ## Resolver Map
 
 You define all of your server's resolvers in a single JavaScript object named `resolvers` this object is the resolver map. The resolver map has top level fields that corresponds to your schema's type (for example query)  and each resolver function belongs to whichever type its corresponding field belongs to.
+
+## Default directives:
+
+GraphQL specification defines the following default directives:
+
+- `@deprecated(reason: String)`: Marks the schema definition of a field or enum value as deprecated with an optional reason. Deprecated doesn't mean that the field is broken it means it will be going away eventually and gives a warning with a detailed reason you enter in.
+
+- `@skip(if: Boolean)`: if true, the decorated field or fragment in an operation is not resolved by the GraphQL server.
+
+- `@include(reason: Boolean)`: If false, the decorated fragment in an operation is not resolved by the GraphQL server. 
+
+## Data Sources
+
