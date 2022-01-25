@@ -24,3 +24,8 @@ GraphQL specification defines the following default directives:
 
 ## Data Sources
 
+Data sources are classes that Apollo Server can use to encapsulate fetching data from a particular source such as a database. You can use any number of different data sources, although not required, data sources are strongly recommended. 
+
+## Filtering Requests
+
+I am utilizing lodash which is a JavaScript library to assist with filtering our data when sending query requests. 
