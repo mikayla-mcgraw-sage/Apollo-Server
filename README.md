@@ -16,11 +16,11 @@ You define all of your server's resolvers in a single JavaScript object named `r
 
 GraphQL specification defines the following default directives:
 
-- `@deprecated(reason: String)`: Marks the schema definition of a field or enum value as deprecated with an optional reason. Deprecated doesn't mean that the field is broken it means it will be going away eventually and gives a warning with a detailed reason you enter in.
+`@deprecated(reason: String)`: Marks the schema definition of a field or enum value as deprecated with an optional reason. Deprecated doesn't mean that the field is broken it means it will be going away eventually and gives a warning with a detailed reason you enter in.
 
-- `@skip(if: Boolean)`: if true, the decorated field or fragment in an operation is not resolved by the GraphQL server.
+`@skip(if: Boolean)`: if true, the decorated field or fragment in an operation is not resolved by the GraphQL server.
 
-- `@include(reason: Boolean)`: If false, the decorated fragment in an operation is not resolved by the GraphQL server. 
+`@include(reason: Boolean)`: If false, the decorated fragment in an operation is not resolved by the GraphQL server. 
 
 ## Data Sources
 
