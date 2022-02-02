@@ -4,13 +4,26 @@
 
 Apollo is a node.js implementation of GraphQL that does a lot of heavy lifting for us so we can just get the business needs.
 
+## Schema Definition Language
+
+The GraphQL specification defines a human-readable schema definition language that you use to define your schema and store it as a string. Here's a short example schema that defines two objects Book and Author: 
+
+```
+type Book {
+  title: String
+  author: Author
+}
+
+type Author {
+  name: String
+  books: [Book]
+}
+
+```
+
 ## GraphQL Queries
 
 In GraphQL we have both read and write operations. A GraphQL query is used to read or fetch values.
-
-## GraphQL Mutations
-
-A GraphQL mutation is used to write or post values.
 
 ## Object types and fields
 
@@ -57,3 +70,15 @@ Data sources are classes that Apollo Server can use to encapsulate fetching data
 I am utilizing lodash which is a JavaScript library to assist with filtering our data when sending query requests. 
 
 ## Fetching REST APIs with GraphQL
+
+In this project we are utilizing `apollo-datasource-rest` package to allow us to make calls to an existing REST API service to fetch speaker data.
+
+## Mutating Data
+
+A GraphQL mutation is used to write or update values to our data. The way you go about mutating data is to add a `Mutation` type to your schema. In our project we have a few different examples of mutations. One which we allow a user to update a favorite flag and another where we allow the user to add a new session to the dataset. Both of these definitions can be found under the schema file under `Mutation` type.
+
+A example of updating data is utilized as a field called 'favorite'. A user can update the `favorite` field of a session using a toggle. You can see this definied in the schema file under the `Session` type.  In our case we added a function under the Mutation type called `toggleFavoriteSession(id: ID): Session`. This calls the resolver to find the `toggleFavoriteSession(id: ID)` method which then calls the datasource to filter the session data by the ID passed in and adjust the toggle to the opposite value of what it is currently and return back the session object with the updated field.
+
+Another example of a mutation we have created in this project is the ability to add a new session object. You can see in the schema file under `Mutation` type we have a function called `addNewSession(session: Session): Session`. This function takes in a `session input` object which we define in our schema file and returns out the new session object the user has added.
+
+An important note is you cannot have a query and mutation task exist in the same tab in the Apollo sandbox. You can nest queries or do mutations but you are unable to do both together.
